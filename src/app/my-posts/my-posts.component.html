@@ -1,0 +1,91 @@
+<section class="searchContainer width100 left">
+    <form action="#" class="relative">
+        <input type="text" name="search" [(ngModel)]="searchTerm" list="hashTagsList">
+        <!-- <section class="left width100 absolute selectedhashtag">
+            <span class="hashtag left">#cheeslove</span>
+            <span class="hashtag left">#kofluence</span>
+        </section> -->
+    </form>
+    <section class="hashtagList left width100">
+        <h5 class="left">Hashtags: </h5>
+        <!-- <span class="hashtag left" *ngFor="let hash of hashtags">#{{hash}}</span> -->
+        <select class="hashtag left" *ngFor="let hash of hashtags" multiple="true" id="hashTagsList">
+            <option value="{{hash}}">#{{hash}}</option>
+        </select>
+    </section>
+</section>
+<section class="myPosts width100 left">
+    <h5>My Posts</h5>
+    <section class="recipies width100 left">
+        <section class="recipyBox left relative" *ngFor="let post of myPosts | filter:searchTerm">
+            <img *ngIf="post.postType === 'image'; else elseBlock" class="recipyImage" src="{{post.image}}" alt="recipyImage">
+            <ng-template #elseBlock>
+                <iframe src="{{post.image}} | safe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </ng-template>
+            <section class="postHead left absolute width100">
+                <section class="time left">
+                    <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                    <span>{{post.createdAt | date}}</span>
+                </section>
+                <section class="postType right">
+                    <section class="postTypeBox">
+                        <i *ngIf="post.postType === 'image'; else videoImg"  class="fa fa-picture-o" aria-hidden="true"></i>
+                        <ng-template #videoImg>
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                        </ng-template>
+                    </section>
+                </section>
+            </section>
+            <section class="postFooter left absolute width100">
+                <section class="likes left">
+                    <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                    <span>{{post.likesCount | shortNumber}}</span>
+                </section>
+                <section class="comments left">
+                    <span><i class="fa fa-commenting" aria-hidden="true"></i></span>
+                    <span>{{post.commentCount |shortNumber}}</span>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+<section class="similarPost width100 left">
+    <section class="width100 left">
+        <h5 class="width100 left"><span class="left">Similar Posts</span><span class="right">{{recipies.length}} Posts</span></h5>
+    </section>
+    <section class="recipies width100 left">
+        <section class="recipyBox left relative" *ngFor="let recipy of recipies | filter:searchTerm">
+            <img class="recipyImage" src="{{recipy.image}}">
+            <!-- <img *ngIf="recipy.postType === 'image'; else videoBlock" class="recipyImage" src="{{recipy.image}}" alt="recipyImage">
+            <ng-template #videoBlock>
+                <iframe src="{{recipy.image}} | safe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </ng-template> -->
+            <section class="postHead left absolute width100">
+                <section class="time left">
+                    <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                    <span>{{recipy.createdAt | date}}</span>
+                </section>
+                <section class="postType right">
+                    <section class="postTypeBox">
+                        <i *ngIf="recipy.postType === 'image'; else videoImg"  class="fa fa-picture-o" aria-hidden="true"></i>
+                        <ng-template #videoImg>
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                        </ng-template>
+                    </section>
+                </section>
+            </section>
+            <section class="postFooter left absolute width100">
+                <section class="likes left">
+                    <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                    <span>{{recipy.likesCount | shortNumber}}</span>
+                </section>
+                <section class="comments left">
+                    <span><i class="fa fa-commenting" aria-hidden="true"></i></span>
+                    <span>{{recipy.commentCount | shortNumber}}</span>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+
+

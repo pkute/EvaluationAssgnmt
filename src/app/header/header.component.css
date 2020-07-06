@@ -1,0 +1,53 @@
+.headerMenu{
+    height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.headerMenu h3{
+    width: 50%;
+    height: 100%;
+}
+.headerMenu .backarrow ,.headerMenu .responsiveMenu, .headerMenu .sectionHeading{
+    font-size: 1em;
+}
+.headerMenu .bottomNav{
+    position: fixed;
+    left:0;
+    bottom:0;
+    color:#000000;
+    background-color: #ffffff;
+    padding:15px;
+    box-sizing: border-box;
+    z-index: 4;
+}
+.headerMenu .bottomNav ul li a{
+    color:#000000;
+    text-decoration: none;
+}
+.headerMenu .bottomNav .bottommenu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.headerMenu .bottomNav ul li{
+    text-align: center;
+}
+.headerMenu .bottomNav ul li i{
+    font-size:1.2em;
+}
+.headerMenu .bottomNav ul li a{
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Media Query */
+@media(max-width:35em){ /* Breakpoint only for mobile */
+    .headerMenu .bottomNav{
+      bottom: 0;
+      width: 100%;
+    }
+  }
